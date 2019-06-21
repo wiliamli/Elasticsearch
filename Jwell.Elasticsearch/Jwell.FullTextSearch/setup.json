@@ -1,0 +1,6 @@
+﻿{
+  "sign": "Jwell.FullTextSearch",
+  "version": "1.0.0.0",
+  "number": "20D76A7A700B4CF1A58185C712A63AD6",
+  "environment": "test" //test,qa,gray,product
+}

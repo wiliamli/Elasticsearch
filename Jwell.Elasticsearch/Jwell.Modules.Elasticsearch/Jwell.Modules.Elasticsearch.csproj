@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1170E146-040A-4DBA-AC4D-D9C1294D6B8E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jwell.Modules.Elasticsearch</RootNamespace>
+    <AssemblyName>Jwell.Modules.Elasticsearch</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Elasticsearch.Net, Version=6.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elasticsearch.Net.6.4.0\lib\net461\Elasticsearch.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Jwell.Modules.SetupConfig">
+      <HintPath>..\packages\Jwell.SetupConfig.1.0.0\Jwell.Modules.SetupConfig.dll</HintPath>
+    </Reference>
+    <Reference Include="Nest, Version=6.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NEST.6.4.0\lib\net461\Nest.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constant\ElasticsearchConstant.cs" />
+    <Compile Include="Constant\ESAnalyzer.cs" />
+    <Compile Include="Entity\FieldSort.cs" />
+    <Compile Include="Entity\IndexOperateStatus.cs" />
+    <Compile Include="Entity\SearchEntityBase.cs" />
+    <Compile Include="Helper\IndexNameHelper.cs" />
+    <Compile Include="Helper\IndexOperateHelper.cs" />
+    <Compile Include="Helper\LoadFieldHelper.cs" />
+    <Compile Include="JwellElasticsearchModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryPredicate\BoolQueryPredicate.cs" />
+    <Compile Include="QueryPredicate\IBoolQueryPredicate.cs" />
+    <Compile Include="QueryPredicate\IQueryPredicate.cs" />
+    <Compile Include="QueryPredicate\IRangeQueryPredicate.cs" />
+    <Compile Include="QueryPredicate\ITermQueryPredicate.cs" />
+    <Compile Include="QueryPredicate\ITermsQueryPredicate.cs" />
+    <Compile Include="QueryPredicate\RangeQueryPredicate.cs" />
+    <Compile Include="QueryPredicate\TermQueryPredicate.cs" />
+    <Compile Include="QueryPredicate\TermsQueryPredicate.cs" />
+    <Compile Include="SearchCondition\ExactValueSearchCondition.cs" />
+    <Compile Include="SearchCondition\FullTextSearchCondition.cs" />
+    <Compile Include="SearchCondition\IExactValueSearchCondition.cs" />
+    <Compile Include="SearchCondition\IFullTextSearchCondition.cs" />
+    <Compile Include="SearchProvider\Client\ElasticsearchClient.cs" />
+    <Compile Include="SearchProvider\Client\Setting\ElasticsearchSetting.cs" />
+    <Compile Include="SearchProvider\IExactValueSearchProvider.cs" />
+    <Compile Include="SearchProvider\IFullTextSearchProvider.cs" />
+    <Compile Include="SearchProvider\IIndexOperateProvider.cs" />
+    <Compile Include="Entity\ElasticsearchException.cs" />
+    <Compile Include="Entity\PropertySearchNameAttribute.cs" />
+    <Compile Include="SearchProvider\Provider\ExactValueSearchProvider.cs" />
+    <Compile Include="SearchProvider\Provider\FullTextSearchProvider.cs" />
+    <Compile Include="SearchProvider\Provider\IndexOperate.cs" />
+    <Compile Include="SearchProvider\Provider\IndexOperateProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jwell.Framework\Jwell.Framework.csproj">
+      <Project>{96A3592A-2C63-4D94-851C-96A561C73651}</Project>
+      <Name>Jwell.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jwell.Module.Configure\Jwell.Modules.Configure.csproj">
+      <Project>{44d7dbe0-cbf6-47a9-a5e0-e5d3e6b04238}</Project>
+      <Name>Jwell.Modules.Configure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jwell.Modules.Cache\Jwell.Modules.Cache.csproj">
+      <Project>{44B49CD0-98BD-4284-AF33-EE7432AC986C}</Project>
+      <Name>Jwell.Modules.Cache</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
